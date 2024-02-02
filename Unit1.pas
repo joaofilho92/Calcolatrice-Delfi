@@ -25,6 +25,18 @@ type
     procedure btnPerClick(Sender: TObject);
     procedure btnDivisoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnPiuMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure btnPiuMouseLeave(Sender: TObject);
+    procedure btnLessMouseLeave(Sender: TObject);
+    procedure btnLessMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure btnPerMouseLeave(Sender: TObject);
+    procedure btnPerMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure btnDivisoMouseLeave(Sender: TObject);
+    procedure btnDivisoMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
   private
     { Private declarations }
   public
@@ -44,11 +56,15 @@ implementation
 
 procedure TForm1.BtnClearClick(Sender: TObject);
 begin
-  E_1.Text := '';
-  E_2.Text := '';
-  E_Result.Text := '';
+  //E_1.Text := '';
+  E_1.Clear;
+  //E_2.Text := '';
+  E_2.Clear;
+  //E_Result.Text := '';
+  E_Result.Clear;
   label2.Caption := '';
-end;
+
+  end;
 
 procedure TForm1.btnDivisoClick(Sender: TObject);
 var
@@ -65,6 +81,17 @@ begin
 
   Label2.Caption := '/';
 
+end;
+
+procedure TForm1.btnDivisoMouseLeave(Sender: TObject);
+begin
+  Label2.Caption := '';
+end;
+
+procedure TForm1.btnDivisoMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  Label2.Caption := '/';
 end;
 
 procedure TForm1.btnLessClick(Sender: TObject);
@@ -84,6 +111,17 @@ begin
 
 end;
 
+procedure TForm1.btnLessMouseLeave(Sender: TObject);
+begin
+  Label2.Caption := '';
+end;
+
+procedure TForm1.btnLessMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+Label2.Caption := '-';
+end;
+
 procedure TForm1.btnPerClick(Sender: TObject);
 var
 A : Integer;
@@ -94,7 +132,6 @@ begin
   A := strToInt(E_1.Text);
   B := strToInt(E_2.Text);
 
-
   Resu := Per(A,B);
 
   E_Result.Text := IntToStr(Resu);
@@ -103,12 +140,32 @@ begin
 
 end;
 
+procedure TForm1.btnPerMouseLeave(Sender: TObject);
+begin
+  Label2.Caption := '';
+end;
+
+procedure TForm1.btnPerMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  Label2.Caption := '*';
+end;
+
 procedure TForm1.btnPiuClick(Sender: TObject);
 var
   A : Integer;
   B : Integer;
   Resu : Integer;
 begin
+  if E_1.Text = '' then
+  begin
+    ShowMessage('Digitare un valore da calcolare');
+  end else
+   if E_2.Text = '' then
+      Begin
+       ShowMessage('Digitare un valore da calcolare');
+      End else
+  begin
   A := strToInt(E_1.Text);
   B := strToInt(E_2.Text);
 
@@ -117,6 +174,19 @@ begin
   E_Result.Text := IntToStr(Resu);
 
   Label2.Caption := '+';
+  end;
+end;
+
+
+procedure TForm1.btnPiuMouseLeave(Sender: TObject);
+begin
+  Label2.Caption := '';
+end;
+
+procedure TForm1.btnPiuMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+   Label2.Caption := '+';
 end;
 
 function TForm1.Divi(const A: Integer; B: Integer): Integer;
