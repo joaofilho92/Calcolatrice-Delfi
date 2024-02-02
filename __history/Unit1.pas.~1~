@@ -1,0 +1,42 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    E_1: TEdit;
+    E_2: TEdit;
+    E_Result: TEdit;
+    btnPiu: TButton;
+    btnLess: TButton;
+    btnPer: TButton;
+    btnDiviso: TButton;
+    BtnClear: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    procedure BtnClearClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.BtnClearClick(Sender: TObject);
+begin
+  E_1.Text := '';
+  E_2.Text := '';
+  E_Result.Text := '';
+end;
+
+end.
